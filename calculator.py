@@ -146,6 +146,7 @@ window.config(background='#39403e')
 #window.config(background='#39403e')
 
 widget_frame = tkinter.Frame(window)
+
 #Display box
 text = tkinter.StringVar(value="")
 textbox = tkinter.Entry(window, font=('Arial', 30), textvariable=text, justify="right", state="readonly", background='#39403e', borderwidth=0, cursor="arrow")
