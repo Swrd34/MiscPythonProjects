@@ -190,7 +190,7 @@ def make_button(button_display_text: str, col: int, row: int, func, bg_color = N
                                  background=bg_color,
                                  foreground=fg_color)
 
-    button_make.grid(column=col, row=row)
+    button_make.grid(column=col, row=row, sticky="nsew")
 
 
 make_button("C", 0, 1, reset_display, func_parameter= None )
