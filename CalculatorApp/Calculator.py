@@ -5,7 +5,11 @@ import tkinter
 def display_text(value):
     """Used for displaying numbers"""
     current_text = text.get()
-    text.set(value=current_text + value)
+
+    if current_text == "0":
+        text.set(value=value)
+    else:
+        text.set(value=current_text + value)
 
 
 def display_text_op(value):
