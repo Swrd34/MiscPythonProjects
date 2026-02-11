@@ -126,7 +126,18 @@ def post_eval(test_expr):
 
                 num_stack.append(pop_val02 * pop_val01)
 
-    return num_stack[0]
+            elif float(item): #When number is a decimal
+                num_stack.append(float(item))
+
+            else:
+                return "Error"
+
+
+    ans = num_stack[0]
+
+
+
+    return ans
 
 
 def equals():
