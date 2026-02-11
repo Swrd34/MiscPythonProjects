@@ -91,7 +91,7 @@ def post_eval(test_expr):
     if test_expr == "Error": #If pre_to_post returns an error, we do here as well.
         return "Error"
 
-    for i, item in enumerate(test_expr):
+    for itm, item in enumerate(test_expr):
         try:
             """Convert numbers in postfix expression to int and add them to stack"""
             test_expr[i] = int(item)
