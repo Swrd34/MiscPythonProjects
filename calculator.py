@@ -205,4 +205,5 @@ make_button("0", 1, 5, func_parameter="0", func=display_text)
 make_button(".", 2, 5, func_parameter=".", func=display_text_op)
 make_button("=", 3, 5, func_parameter=None, func=equals)
 
+widget_frame.pack()
 window.mainloop()
