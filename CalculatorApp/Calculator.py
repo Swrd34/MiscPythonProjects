@@ -21,7 +21,18 @@ def display_text_op(value):
     elif current_text[-1] == " " or current_text[-1] == "." or current_text[-1] == "%":
         return
 
-    text.set(value=current_text + value)
+    elif current_text[-1] == "0" and value == "-": #specific for handling (-)
+        text.set(value=value)
+        return
+    elif current_text[-1].isdigit() and value == "-":
+        return
+    
+
+    else:
+        text.set(value=current_text + value)
+
+def display_text_op_parnth(value):
+    pass
 
 def pre_to_post(expr_string):
     """Takes an expression and runs it through the ShuntYard algorithm to get the postfix expression"""
