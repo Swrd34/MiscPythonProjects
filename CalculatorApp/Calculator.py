@@ -141,8 +141,6 @@ def equals():
         text.set(value= post_eval(post_fix_expr))
 
 
-
-
 def reset_display():
     """Clears the display"""
     text.set(value="0")
