@@ -48,8 +48,7 @@ def pre_to_post(expr_string):
 
         except ValueError:
             """If it is not a number"""
-            if input_item in operator_precedence and len(
-                    op_queue) != 0:  # Check for if the symbol is in the op dictionary
+            if input_item in operator_precedence and len(op_queue) != 0:  # Check for if the symbol is in the op dictionary
 
                 while operator_precedence[input_item] <= operator_precedence[
                     op_queue[-1]]:  # While the operator has a lower or equal precedence to the top stack operator
