@@ -132,7 +132,7 @@ def equals():
     if current_text == "0":
         return
 
-    elif current_text[-1] == " " or current_text[-1] == ".":
+    elif current_text[-1] == " " or not current_text[-1].isdigit():
         return
 
 
