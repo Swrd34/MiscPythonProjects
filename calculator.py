@@ -138,19 +138,33 @@ def reset_display():
 window = tkinter.Tk()
 icon = tkinter.PhotoImage(file="bean.png")
 window.iconphoto(True, icon)
-window.title("Calculator")
+window.title("Calculator.py")
 window.resizable(False, False)
-window.config(background='#39403e')
-
-#window.resizable(False, False)
-#window.config(background='#39403e')
 
 widget_frame = tkinter.Frame(window)
 
 #Display box
 text = tkinter.StringVar(value="")
-textbox = tkinter.Entry(window, font=('Arial', 30), textvariable=text, justify="right", state="readonly", background='#39403e', borderwidth=0, cursor="arrow")
-textbox.grid(row=0, column=0, columnspan=7)
+textbox = tkinter.Entry(widget_frame, font=('Arial', 28), textvariable=text, justify="right", state="readonly", background='white', cursor="arrow", width=14)
+textbox.grid(row=0, column=0, columnspan=4, sticky="nsew")
+
+
+
+#button properties(0-9)
+num_button_color = "#262526"
+num_button_width = 1
+num_button_height = 2
+num_button_pad_y = 20
+
+
+
+#General button properties
+button_text_color = "#ffffff"
+text_font = 12
+op_button_color = "#f5a52f"
+bottom_row_op_colors = "#351b4a"
+right_column_height = 3
+
 
 
 #Create button numbers 1-9
@@ -162,49 +176,67 @@ for i in range(3):
 
     for j in range(3):
         text_num += 1
-        button = tkinter.Button(window,
+        button = tkinter.Button(widget_frame,
                                 text=f"{text_num}",
-                                font="12",
-                                border=5,
-                                padx=40,
-                                pady=15,
+                                font=('Arial', text_font),
+                                border=1,
+                                pady=num_button_pad_y,
+                                activebackground=num_button_color,
+                                background=num_button_color,
+                                fg=button_text_color,
+                                activeforeground=button_text_color,
                                 command=lambda n=text_num: display_text(f"{n}"))
 
-        button.grid(column=col_num, row=row_num)
+
+        button.grid(column=col_num, row=row_num, sticky="nsew") #Sticky makes the button fill entire grid()
+        button.config(height = num_button_height, width = num_button_width)
         col_num += 1
 
 
 #Rest of the calculator buttons
-def make_button(button_display_text: str, col: int, row: int, func, bg_color = None, fg_color = None, func_parameter=None): #Default function for button is display_text
+def make_button(button_display_text: str,
+                col: int,
+                row: int,
+                func,
+                bg_color,
+                text_color = button_text_color,
+                y_padding = 10,
+                width = 1,
+                height = 0,
+                func_parameter=None,): #Default function for button is display_text
+
     if func_parameter is None: #If nothing is being passed through the function
         cmd = func
     else:
         cmd = lambda: func(func_parameter)
 
-    button_make = tkinter.Button(window,
+    button_make = tkinter.Button(widget_frame,
                                  text=button_display_text,
-                                 font="12",
+                                 font=('Arial', text_font),
                                  command=cmd,
-                                 padx=40,
-                                 pady=15,
-                                 border=5,
+                                 pady=y_padding,
+                                 border=1,
+                                 activebackground=bg_color,
                                  background=bg_color,
-                                 foreground=fg_color)
+                                 foreground=text_color,
+                                 activeforeground=button_text_color
+                                 )
 
     button_make.grid(column=col, row=row, sticky="nsew")
+    button_make.config(width=width, height=height)
 
 
-make_button("C", 0, 1, reset_display, func_parameter= None )
-make_button("()", 1, 1,display_text_op, func_parameter=" FixMe ")
-make_button("%", 2, 1, display_text_op, func_parameter=" FixMe ")
-make_button("*", 3, 1, display_text_op, func_parameter=" * ")
-make_button("/", 3, 2, func_parameter=" / ", func=display_text_op)
-make_button("-", 3, 3, func_parameter=" - ", func=display_text_op)
-make_button("+", 3, 4, func_parameter=" + ", func=display_text_op)
-make_button("( - )", 0, 5, func_parameter="FixMe!", func=display_text_op)
-make_button("0", 1, 5, func_parameter="0", func=display_text)
-make_button(".", 2, 5, func_parameter=".", func=display_text_op)
-make_button("=", 3, 5, func_parameter=None, func=equals)
+make_button("C", 0, 1, func=reset_display, bg_color=op_button_color, func_parameter= None )
+make_button("()", 1, 1,func=display_text_op, bg_color=op_button_color, func_parameter=" FixMe ")
+make_button("%", 2, 1, func=display_text_op, bg_color=op_button_color,func_parameter=" FixMe ")
+make_button("*", 3, 1, func=display_text_op, bg_color=op_button_color, func_parameter=" * ")
+make_button("/", 3, 2,func=display_text_op, bg_color=op_button_color, func_parameter=" / ")
+make_button("-", 3, 3,func=display_text_op, bg_color=op_button_color, func_parameter=" - ")
+make_button("+", 3, 4,func=display_text_op, bg_color=op_button_color,func_parameter=" + ")
+make_button("( - )", 0, 5,func=display_text_op, bg_color=bottom_row_op_colors,func_parameter="FixMe!")
+make_button("0", 1, 5,func=display_text, bg_color=num_button_color, func_parameter="0")
+make_button(".", 2, 5,func=display_text_op, bg_color=bottom_row_op_colors,func_parameter=".")
+make_button("=", 3, 5,func=equals, bg_color=op_button_color,func_parameter=None)
 
 widget_frame.pack()
 window.mainloop()
