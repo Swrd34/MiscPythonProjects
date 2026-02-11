@@ -144,7 +144,7 @@ window.config(background='#39403e')
 
 #Display box
 text = tkinter.StringVar(value="")
-textbox = tkinter.Entry(window, font=('Arial', 30), border="30", textvariable=text, justify="right", state="readonly", background='#39403e', borderwidth=0, cursor="arrow", xscrollcommand="auto")
+textbox = tkinter.Entry(window, font=('Arial', 30), textvariable=text, justify="right", state="readonly", background='#39403e', borderwidth=0, cursor="arrow")
 textbox.grid(row=0, column=0, columnspan=7)
 
 
@@ -152,7 +152,7 @@ textbox.grid(row=0, column=0, columnspan=7)
 row_num = 1
 text_num = 0
 for i in range(3):
-    col_num = 1
+    col_num = 0
     row_num += 1
 
     for j in range(3):
@@ -189,16 +189,16 @@ def make_button(button_display_text: str, col: int, row: int, func, bg_color = N
     button_make.grid(column=col, row=row)
 
 
-make_button("C", 1, 1, reset_display, func_parameter= None )
-make_button("()", 2, 1,display_text_op, func_parameter=" FixMe ")
-make_button("%", 3, 1, display_text_op, func_parameter=" FixMe ")
-make_button("*", 4, 1, display_text_op, func_parameter=" * ")
-make_button("/", 4, 2, func_parameter=" / ", func=display_text_op)
-make_button("-", 4, 3, func_parameter=" - ", func=display_text_op)
-make_button("+", 4, 4, func_parameter=" + ", func=display_text_op)
-make_button("( - )", 1, 5, func_parameter="FixMe!", func=display_text_op)
-make_button("0", 2, 5, func_parameter="0", func=display_text)
-make_button(".", 3, 5, func_parameter=".", func=display_text_op)
-make_button("=", 4, 5, func_parameter=None, func=equals)
+make_button("C", 0, 1, reset_display, func_parameter= None )
+make_button("()", 1, 1,display_text_op, func_parameter=" FixMe ")
+make_button("%", 2, 1, display_text_op, func_parameter=" FixMe ")
+make_button("*", 3, 1, display_text_op, func_parameter=" * ")
+make_button("/", 3, 2, func_parameter=" / ", func=display_text_op)
+make_button("-", 3, 3, func_parameter=" - ", func=display_text_op)
+make_button("+", 3, 4, func_parameter=" + ", func=display_text_op)
+make_button("( - )", 0, 5, func_parameter="FixMe!", func=display_text_op)
+make_button("0", 1, 5, func_parameter="0", func=display_text)
+make_button(".", 2, 5, func_parameter=".", func=display_text_op)
+make_button("=", 3, 5, func_parameter=None, func=equals)
 
 window.mainloop()
