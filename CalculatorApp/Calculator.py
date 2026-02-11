@@ -245,7 +245,7 @@ make_button("*", 3, 1, func=display_text_op, bg_color=op_button_color, func_para
 make_button("/", 3, 2,func=display_text_op, bg_color=op_button_color, func_parameter=" / ")
 make_button("-", 3, 3,func=display_text_op, bg_color=op_button_color, func_parameter=" - ")
 make_button("+", 3, 4,func=display_text_op, bg_color=op_button_color,func_parameter=" + ")
-make_button("( - )", 0, 5,func=display_text_op, bg_color=bottom_row_op_colors,func_parameter="FixMe!")
+make_button("( - )", 0, 5,func=display_text_op, bg_color=bottom_row_op_colors,func_parameter="-")
 make_button("0", 1, 5,func=display_text, bg_color=num_button_color, func_parameter="0")
 make_button(".", 2, 5,func=display_text_op, bg_color=bottom_row_op_colors,func_parameter=".")
 make_button("=", 3, 5,func=equals, bg_color=op_button_color,func_parameter=None)
