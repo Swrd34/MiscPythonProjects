@@ -203,7 +203,7 @@ def make_button(button_display_text: str,
                 y_padding = 10,
                 width = 1,
                 height = 0,
-                func_parameter=None,): #Default function for button is display_text
+                func_parameter=None): #Default function for button is display_text
 
     if func_parameter is None: #If nothing is being passed through the function
         cmd = func
