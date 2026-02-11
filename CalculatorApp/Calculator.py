@@ -94,8 +94,8 @@ def post_eval(test_expr):
     for itm, item in enumerate(test_expr):
         try:
             """Convert numbers in postfix expression to int and add them to stack"""
-            test_expr[i] = int(item)
-            num_stack.append(test_expr[i])
+            test_expr[itm] = int(item)
+            num_stack.append(test_expr[itm])
 
 
         except ValueError:
