@@ -15,7 +15,7 @@ def display_text(value):
 def display_text_op(value):
     """Used for displaying operations (Preventing duplicate operations)"""
     current_text = text.get()
-    if current_text == "":
+    if current_text == "": #This shouldn't be possible but im going to leave it in
         return
 
     elif current_text[-1] == " " or current_text[-1] == "." or current_text[-1] == "%":
