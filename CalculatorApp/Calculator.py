@@ -148,7 +148,7 @@ window.resizable(False, False)
 widget_frame = tkinter.Frame(window)
 
 #Display box
-text = tkinter.StringVar(value="")
+text = tkinter.StringVar(value="0")
 textbox = tkinter.Entry(widget_frame, font=('Arial', 28), textvariable=text, justify="right", state="readonly", background='white', cursor="arrow", width=14)
 textbox.grid(row=0, column=0, columnspan=4, sticky="nsew")
 
