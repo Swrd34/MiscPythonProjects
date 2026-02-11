@@ -135,7 +135,7 @@ def equals():
 
 def reset_display():
     """Clears the display"""
-    text.set(value="")
+    text.set(value="0")
 
 
 #Window Creation
