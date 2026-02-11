@@ -88,6 +88,8 @@ def pre_to_post(expr_string):
 def post_eval(test_expr):
     """Solves postfix expressions and returns the value"""
     num_stack = []
+    if test_expr == "Error": #If pre_to_post returns an error, we do here as well.
+        return "Error"
 
     for i, item in enumerate(test_expr):
         try:
