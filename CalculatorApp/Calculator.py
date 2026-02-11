@@ -119,7 +119,7 @@ def post_eval(test_expr):
 
 def equals():
     current_text = text.get()
-    if current_text == "":
+    if current_text == "0":
         return
 
     elif current_text[-1] == " " or current_text[-1] == ".":
