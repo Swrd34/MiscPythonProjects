@@ -18,7 +18,7 @@ def display_text_op(value):
     if current_text == "": #This shouldn't be possible but im going to leave it in
         return
 
-    elif current_text[-1] == " " or current_text[-1] == "." or current_text[-1] == "%":
+    elif current_text[-1] == " " or current_text[-1] == "." or current_text[-1] == "-":
         return
 
     elif current_text[-1] == "0" and value == "-": #specific for handling (-)
