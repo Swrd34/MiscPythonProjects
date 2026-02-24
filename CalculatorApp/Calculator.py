@@ -1,6 +1,5 @@
 import tkinter
 
-
 #Calculator Functions
 def display_text(value):
     """Used for displaying numbers"""
@@ -27,7 +26,7 @@ def display_text_op(value):
         return
     elif current_text[-1].isdigit() and value == "-":
         return
-    
+
 
     else:
         text.set(value=current_text + value)
@@ -51,7 +50,6 @@ def pre_to_post(expr_string):
         else:
             input_list.append(queued_string)
             queued_string = ""
-
     for input_item in input_list:
         try:
             """If the item is a number, output to the output list"""
@@ -60,29 +58,35 @@ def pre_to_post(expr_string):
 
         except ValueError:
             """If it is not a number"""
-            if input_item in operator_precedence and len(op_queue) != 0:  # Check for if the symbol is in the op dictionary
+            if input_item in operator_precedence:
 
-                while operator_precedence[input_item] <= operator_precedence[
-                    op_queue[-1]]:  # While the operator has a lower or equal precedence to the top stack operator
+                if len(op_queue) != 0:  # Check for if the symbol is in the op dictionary
 
-                    popped_val = op_queue.pop()
-                    output_list.append(popped_val)
+                    while operator_precedence[input_item] <= operator_precedence[
+                        op_queue[-1]]:  # While the operator has a lower or equal precedence to the top stack operator
 
-                    if len(op_queue) == 0:  # Stop if the queue is empty
-                        break
-                    else:
-                        continue
+                        popped_val = op_queue.pop()
+                        output_list.append(popped_val)
 
-                op_queue.append(input_item)
+                        if len(op_queue) == 0:  # Stop if the queue is empty
+                            break
+                        else:
+                            continue
+
+                    op_queue.append(input_item)
+                else:
+                    op_queue.append(input_item)
+
+            elif float(input_item):
+                output_list.append(input_item)
 
             else:
-                op_queue.append(input_item)
+                return "Error"
 
     while len(op_queue) != 0:
         """After going through the string, push the rest of the queue to the output"""
         popped_val = op_queue.pop()
         output_list.append(popped_val)
-
     return output_list
 
 
@@ -253,7 +257,7 @@ def make_button(button_display_text: str,
 
 
 make_button("C", 0, 1, func=reset_display, bg_color=op_button_color, func_parameter= None )
-make_button("()", 1, 1,func=display_text_op, bg_color=op_button_color, func_parameter=" FixMe ")
+make_button("()", 1, 1,func=display_text_op, bg_color=op_button_color, func_parameter=" ( ")
 make_button("%", 2, 1, func=display_text_op, bg_color=op_button_color,func_parameter=" FixMe ")
 make_button("*", 3, 1, func=display_text_op, bg_color=op_button_color, func_parameter=" * ")
 make_button("/", 3, 2,func=display_text_op, bg_color=op_button_color, func_parameter=" / ")
