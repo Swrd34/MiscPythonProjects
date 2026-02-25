@@ -30,6 +30,7 @@ def display_text_op(value):
 
     else:
         text.set(value=current_text + value)
+        return 
 
 def display_text_op_parnth(value):
     pass
