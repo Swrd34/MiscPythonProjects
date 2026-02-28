@@ -1,4 +1,5 @@
 import tkinter
+from decimal import Decimal #Precice decimal numbers
 
 #Calculator Functions
 def display_text(value):
@@ -30,7 +31,7 @@ def display_text_op(value):
 
     else:
         text.set(value=current_text + value)
-        return 
+        return
 
 def display_text_op_parnth(value):
     pass
@@ -78,7 +79,7 @@ def pre_to_post(expr_string):
                 else:
                     op_queue.append(input_item)
 
-            elif float(input_item):
+            elif Decimal(input_item):
                 output_list.append(input_item)
 
             else:
@@ -132,8 +133,8 @@ def post_eval(test_expr):
 
                 num_stack.append(pop_val02 * pop_val01)
 
-            elif float(item): #When number is a decimal
-                num_stack.append(float(item))
+            elif Decimal(item): #When number is a decimal
+                num_stack.append(Decimal(item))
 
             else:
                 return "Error"
@@ -176,7 +177,7 @@ widget_frame = tkinter.Frame(window)
 
 #Display box
 text = tkinter.StringVar(value="0")
-textbox = tkinter.Entry(widget_frame, font=('Arial', 28), textvariable=text, justify="right", state="readonly", background='white', cursor="arrow", width=14)
+textbox = tkinter.Label(widget_frame, font=('Arial', 28), textvariable=text, background='white', cursor="arrow", width=14, justify="right", anchor="e", state="active")
 textbox.grid(row=0, column=0, columnspan=4, sticky="nsew")
 
 
@@ -268,6 +269,5 @@ make_button("( - )", 0, 5,func=display_text_op, bg_color=bottom_row_op_colors,fu
 make_button("0", 1, 5,func=display_text, bg_color=num_button_color, func_parameter="0")
 make_button(".", 2, 5,func=display_text_op, bg_color=bottom_row_op_colors,func_parameter=".")
 make_button("=", 3, 5,func=equals, bg_color=op_button_color,func_parameter=None)
-
 widget_frame.pack()
 window.mainloop()
