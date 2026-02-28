@@ -17,7 +17,7 @@ class CalculatorLogic:
 
         for i, item in enumerate(expr_string):
             if item == "-":
-                if i == 0:
+                if i == 0: #When the first number is negative
                     grouped_items += item
 
                 elif expr_string[i+1].isdigit(): #Handleing if the item is unary (-)
