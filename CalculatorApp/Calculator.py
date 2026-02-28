@@ -22,9 +22,11 @@ def display_text_op(value):
     elif current_text[-1] == " " or current_text[-1] == "." or current_text[-1] == "-":
         return
 
-    elif current_text[-1] == "0" and value == "-": #specific for handling (-)
-        text.set(value=value)
-        return
+    if value == "-": #specific for handling (-)
+        if current_text == "0":
+            text.set(value=value)
+
+
     elif current_text[-1].isdigit() and value == "-":
         return
 
