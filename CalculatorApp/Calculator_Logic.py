@@ -16,8 +16,16 @@ class CalculatorLogic:
         grouped_items = "" #Temporary string for holding multidigit numbers and decimals before being appended to the input_list as tokens
 
         for i, item in enumerate(expr_string):
-            if (item == "-") and (i == 0 or expr_string[i+1].isdigit()): #Handleing if the item is unary (-)
-                grouped_items += item
+            if item == "-":
+                if i == 0:
+                    grouped_items += item
+
+                elif expr_string[i+1].isdigit(): #Handleing if the item is unary (-)
+                    input_list.append(grouped_items)
+                    input_list.append(item)
+                    grouped_items = ""
+                else:
+                    return "Error"
 
             elif item.isdigit() or item in ".":
                 grouped_items += item
