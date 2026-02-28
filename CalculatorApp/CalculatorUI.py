@@ -43,8 +43,8 @@ def equals():
 
 
     else:
-        post_fix_expr = pre_to_post(current_text)
-        text.set(value= post_eval(post_fix_expr))
+        post_fix_expr = Calc_Logic.pre_to_post(current_text)
+        text.set(value= Calc_Logic.post_eval(post_fix_expr))
 
 
 def reset_display():
