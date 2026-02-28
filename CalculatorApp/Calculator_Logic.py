@@ -116,5 +116,3 @@ class CalculatorLogic:
         ans = num_stack[0]
 
         return ans
-
-
