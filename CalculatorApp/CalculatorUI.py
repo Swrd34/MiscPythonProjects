@@ -16,9 +16,6 @@ def display_text_op(value):
     """Used for displaying operations (Preventing duplicate operations and weird looking equations)"""
     current_text = text.get()
 
-    if current_text == "": #This shouldn't be possible but im going to leave it in
-        return
-
     if value == "-": #specific for handling (-)
         if current_text == "0":
             text.set(value=value)
