@@ -28,14 +28,6 @@ def display_text_op(value):
     if current_text[-1] == " " or current_text[-1] == "." or current_text[-1] == "-":
         return
 
-    if value == "-": #specific for handling (-)
-        if current_text == "0":
-            text.set(value=value)
-
-
-    elif current_text[-1].isdigit() and value == "-":
-        return
-
 
     else:
         text.set(value=current_text + value)
