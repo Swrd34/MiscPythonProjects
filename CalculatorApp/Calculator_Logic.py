@@ -20,7 +20,7 @@ class CalculatorLogic:
                 if i == 0: #When the first number is negative
                     grouped_items += item
 
-                elif expr_string[i+1].isdigit(): #Handleing if the item is unary (-)
+                elif expr_string[i+1].isdigit(): #Handleing if the - is an operator
                     input_list.append(grouped_items)
                     input_list.append(item)
                     grouped_items = ""
