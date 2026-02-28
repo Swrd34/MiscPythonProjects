@@ -19,7 +19,13 @@ def display_text_op(value):
     if current_text == "": #This shouldn't be possible but im going to leave it in
         return
 
-    elif current_text[-1] == " " or current_text[-1] == "." or current_text[-1] == "-":
+    if value == "-": #specific for handling (-)
+        if current_text == "0":
+            text.set(value=value)
+        elif current_text[-1].isdigit() or current_text[-2] in ["/", "*"]:
+            text.set(value=current_text + " " + value + " ")
+
+    if current_text[-1] == " " or current_text[-1] == "." or current_text[-1] == "-":
         return
 
     if value == "-": #specific for handling (-)
