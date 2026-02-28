@@ -1,6 +1,9 @@
 import tkinter
 from decimal import Decimal #Precice decimal numbers
 
+#CalculatorLogic initialization
+Calc_Logic = Calculator_Logic.CalculatorLogic()
+
 #Calculator Functions
 def display_text(value):
     """Used for displaying numbers"""
