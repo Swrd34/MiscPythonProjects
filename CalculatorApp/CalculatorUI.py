@@ -10,7 +10,7 @@ def display_text(value):
     """Used for displaying numbers"""
     current_text = text.get()
 
-    if current_text == "0":
+    if current_text == "0" or current_text == "Error":
         text.set(value=value)
     else:
         text.set(value=current_text + value)
