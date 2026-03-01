@@ -110,6 +110,8 @@ class CalculatorLogic:
                         num_stack.append(pop_val02 / pop_val01)
                     except ZeroDivisionError:
                         return "Error"
+                    except DivisionByZero:
+                        return "Error"
 
                 elif item == "*":
                     pop_val01 = num_stack.pop()
