@@ -30,7 +30,7 @@ class CalculatorLogic:
             elif item.isdigit() or item in ".":
                 grouped_items += item
             else:
-                if grouped_items == "": #If the first char is not a number or unary (-)
+                if grouped_items == "": #If grouped items has nothing, append directly
                     input_list.append(item)
                 else:
                     input_list.append(grouped_items)
