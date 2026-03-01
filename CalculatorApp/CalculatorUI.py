@@ -31,7 +31,7 @@ def display_text_op(value):
             text.set(value=text.get().replace(current_text[-1], value)) #Using text.get() rather than current_text to preserve the spaces used for formatting
 
     else:
-        text.set(value=current_text + value)
+        text.set(value=text.get() + " " + value + " ")
         return
 
 def display_text_op_parnth(value):
