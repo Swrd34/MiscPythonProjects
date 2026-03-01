@@ -1,6 +1,4 @@
-from decimal import Decimal, InvalidOperation #Precice decimal numbers
-
-
+from decimal import Decimal, InvalidOperation, DivisionByZero #Precice decimal numbers
 
 class CalculatorLogic:
 
