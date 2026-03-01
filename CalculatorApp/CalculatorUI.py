@@ -39,9 +39,14 @@ def display_text_op(value):
         return
 
     if last_char in Calc_Logic.operator_precedence: #This is being used to check if an operator of opposite function, but equal precedence is being input right after each other
-        if Calc_Logic.operator_precedence[last_char] == Calc_Logic.operator_precedence[value]:
-            text.set(value=text.get().replace(current_text[-1], value)) #Using text.get() rather than current_text to preserve the spaces used for formatting
-
+        if last_char == value:
+            return
+        else:
+            try:
+                if Calc_Logic.operator_precedence[last_char] == Calc_Logic.operator_precedence[value]:
+                    text.set(value=text.get().replace(current_text[-1], value)) #Using text.get() rather than current_text to preserve the spaces used for formatting
+            except KeyError:
+                pass
     else:
         text.set(value=text.get() + " " + value + " ")
         return
