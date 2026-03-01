@@ -1,6 +1,6 @@
 import tkinter
 import Calculator_Logic
-from decimal import Decimal #Precice decimal numbers
+
 
 #CalculatorLogic initialization
 Calc_Logic = Calculator_Logic.CalculatorLogic()
