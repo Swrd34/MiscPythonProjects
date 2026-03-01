@@ -28,11 +28,15 @@ def display_text_op(value):
             i -= 1
             continue
 
-    if value == "-": #specific for handling (-)
-        if current_text == "0":
-            text.set(value=value)
-        elif current_text[-1].isdigit() or current_text[-2] in ["/", "*"]:
-            text.set(value=current_text + " " + value + " ")
+    last_num = current_text[i+1:] #Get the last number in the equation
+    last_char = current_text[-1] #Get the last char in the equation
+
+    if value == "." and "." in last_num: #Prevent double decimals
+        return
+
+    if value == "-" and current_text == "0":
+        text.set(value=value)
+        return
 
     if last_char in Calc_Logic.operator_precedence: #This is being used to check if an operator of opposite function, but equal precedence is being input right after each other
         if Calc_Logic.operator_precedence[last_char] == Calc_Logic.operator_precedence[value]:
