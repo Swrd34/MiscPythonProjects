@@ -25,7 +25,7 @@ class CalculatorLogic:
                     input_list.append(item)
                     grouped_items = ""
                 else:
-                    return "Error"
+                    grouped_items += item
 
             elif item.isdigit() or item == ".":
                 grouped_items += item
