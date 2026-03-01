@@ -27,7 +27,7 @@ class CalculatorLogic:
                 else:
                     return "Error"
 
-            elif item.isdigit() or item in ".":
+            elif item.isdigit() or item == ".":
                 grouped_items += item
             else:
                 if grouped_items == "": #If grouped items has nothing, append directly
