@@ -108,7 +108,7 @@ class CalculatorLogic:
 
                     try:
                         num_stack.append(pop_val02 / pop_val01)
-                    except ZeroDivisionError:
+                    except InvalidOperation:
                         return "Error"
                     except DivisionByZero:
                         return "Error"
