@@ -86,6 +86,8 @@ def display_text_op_parnth():
     if para_count % 2 == 0: #If there is no need for a closing ")"
         if current_text[-1].isdigit():
             text.set(value=text.get() + " * " + "(")
+        elif not current_text[-1].isdigit():
+            return
         else:
             text.set(value=text.get() + "(")
 
