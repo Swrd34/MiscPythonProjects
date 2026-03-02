@@ -27,7 +27,7 @@ def display_text_op(value):
         if current_text[l] in Calc_Logic.operator_precedence:
             break
         else:
-            i -= 1
+            l -= 1
             continue
 
     last_num = current_text[i+1:] #Get the last number in the equation
