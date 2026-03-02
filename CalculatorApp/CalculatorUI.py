@@ -21,7 +21,7 @@ def display_text(value):
 def display_text_op(value):
     """Used for displaying operations (Preventing duplicate operations and weird looking equations)"""
     current_text = text.get().replace(" ", "")
-    i = (len(current_text) - 1)
+    l = (len(current_text) - 1)
 
     while i != 0: #For getting the last number in
         if current_text[i] in Calc_Logic.operator_precedence:
