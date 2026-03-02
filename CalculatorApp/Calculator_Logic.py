@@ -18,10 +18,14 @@ class CalculatorLogic:
                 if i == 0: #When the first number is negative
                     grouped_items += item
 
-                elif expr_string[i-1].isdigit(): #Handleing if the - is an operator
-                    input_list.append(grouped_items)
-                    input_list.append(item)
-                    grouped_items = ""
+                elif expr_string[i-1].isdigit() or expr_string[i-1] == ")": #Handleing if the char before the current is a number, or the end of a parenthesis. In these cases, - should be treated as an operator
+                    if grouped_items == "":  # If grouped items has nothing, append directly
+                        input_list.append(item)
+                    else:
+                        input_list.append(grouped_items)
+                        input_list.append(item)
+                        grouped_items = ""
+
                 else:
                     grouped_items += item
 
