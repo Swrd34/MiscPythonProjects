@@ -8,7 +8,7 @@ Calc_Logic = Calculator_Logic.CalculatorLogic()
 #Calculator Functions
 def display_text(value):
     """Used for displaying numbers"""
-    current_text = text.get()
+    current_text = text.get().replace(" ", "")
 
     if current_text == "0" or current_text == "Error":
         text.set(value=value)
