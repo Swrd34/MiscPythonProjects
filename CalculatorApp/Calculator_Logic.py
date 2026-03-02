@@ -63,7 +63,7 @@ class CalculatorLogic:
 
                         op_queue.append(item) #After checking precedences, add the item
                     else:
-                        op_queue.append(item) #If queue is empty
+                        op_queue.append(item) #If queue is empty, add the operator
 
                 else:
                     return "Error"
