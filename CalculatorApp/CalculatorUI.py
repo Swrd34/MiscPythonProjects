@@ -17,7 +17,6 @@ def display_text(value):
     else:
         text.set(value=text.get() + value)
 
-
 def display_text_op(value):
     """Used for displaying operations (Preventing duplicate operations and weird looking equations)"""
     current_text = text.get().replace(" ", "")
