@@ -3,7 +3,7 @@ from decimal import Decimal, InvalidOperation, DivisionByZero #Precice decimal n
 class CalculatorLogic:
 
     def __init__(self):
-        self.operator_precedence = {"+": 1, "-": 1, "*": 2, "/": 2}
+        self.operator_precedence = {"+": 1, "-": 1, "*": 2, "/": 2, "(": 0, ")": 0}
 
     def pre_to_post(self, expr_string):
         """Takes an expression and runs it through the ShuntYard algorithm to get the postfix expression"""
