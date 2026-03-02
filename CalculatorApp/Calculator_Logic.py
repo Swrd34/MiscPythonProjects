@@ -49,7 +49,7 @@ class CalculatorLogic:
                 """If it is not a number"""
                 if item in self.operator_precedence:
 
-                    if len(op_queue) != 0:  # Check for if the symbol is in the op dictionary
+                    if len(op_queue) != 0:  # Check for if the queue is empty
 
                         while self.operator_precedence[item] <= self.operator_precedence[op_queue[-1]]:  # While the operator has a lower or equal precedence to the top stack operator
 
