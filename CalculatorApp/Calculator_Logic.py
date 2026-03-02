@@ -75,7 +75,7 @@ class CalculatorLogic:
                                     else:
                                         continue
                                 op_queue.append(item)  # After checking precedences, add the item
-                                break
+                                break #Break from While True loop
                     else:
                         op_queue.append(item) #If queue is empty, add the operator
 
