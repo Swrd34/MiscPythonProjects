@@ -55,10 +55,20 @@ class CalculatorLogic:
 
                     if len(op_queue) != 0:  # Check for if the queue is empty
 
-                        while self.operator_precedence[item] <= self.operator_precedence[op_queue[-1]]:  # While the operator has a lower or equal precedence to the top stack operator
-
-                            popped_val = op_queue.pop()
-                            output_list.append(popped_val)
+                        while True:
+                            if item == "(":
+                                op_queue.append(item)
+                                break
+                            elif item == ")":
+                                while op_queue[-1] != "(":
+                                    popped_val = op_queue.pop()
+                                    output_list.append(popped_val)
+                                op_queue.remove(op_queue[-1])
+                                break
+                            else:
+                                while self.operator_precedence[item] <= self.operator_precedence[op_queue[-1]]:  # While the operator has a lower or equal precedence to the top stack operator
+                                    popped_val = op_queue.pop()
+                                    output_list.append(popped_val)
 
                             if len(op_queue) == 0:  # Stop if the queue is empty
                                 break
