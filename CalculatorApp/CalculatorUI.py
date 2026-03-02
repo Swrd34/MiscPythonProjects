@@ -33,6 +33,9 @@ def display_text_op(value):
 
     if value == "." and "." in last_num: #Prevent double decimals
         return
+    elif value == ".":
+        text.set(value=text.get() + value)
+        return
 
     if value == "-" and current_text == "0":
         text.set(value=value)
