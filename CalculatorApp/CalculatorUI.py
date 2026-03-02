@@ -15,7 +15,7 @@ def display_text(value):
     elif current_text[-1] == ")":
         text.set(value=text.get() + " * " + value)
     else:
-        text.set(value=current_text + value)
+        text.set(value=text.get() + value)
 
 
 def display_text_op(value):
