@@ -30,7 +30,7 @@ def display_text_op(value):
             l -= 1
             continue
 
-    last_num = current_text[i+1:] #Get the last number in the equation
+    last_num = current_text[l+1:] #Get the last number in the equation
     last_char = current_text[-1] #Get the last char in the equation
 
     if value == "." and "." in last_num: #Prevent double decimals
