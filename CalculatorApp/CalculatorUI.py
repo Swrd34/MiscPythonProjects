@@ -66,8 +66,38 @@ def display_text_op(value):
         text.set(value=text.get() + " " + value + " ")
         return
 
-def display_text_op_parnth(value):
-    pass
+def display_text_op_parnth():
+    current_text = text.get().replace(" ", "")
+    para_count = 0
+    l = (len(current_text) - 1)
+
+    if current_text == "0":
+        text.set(value="(")
+        return
+
+    while l != -1: #Goes through the current text and checks for the parenthesis count
+        if current_text[l] == ")" or current_text[l] == "(":
+            para_count += 1
+            l -= 1
+        else:
+            l-= 1
+
+
+    if para_count % 2 == 0: #If there is no need for a closing ")"
+        if current_text[-1].isdigit():
+            text.set(value=text.get() + " * " + "(")
+        else:
+            text.set(value=text.get() + "(")
+
+    elif not current_text[-1].isdigit():
+        return
+
+    else:
+        text.set(value=text.get() + ")")
+
+
+
+
 
 def equals():
     current_text = text.get()
