@@ -12,6 +12,8 @@ def display_text(value):
 
     if current_text == "0" or current_text == "Error":
         text.set(value=value)
+    elif current_text[-1] == ")":
+        text.set(value=text.get() + " * " + value)
     else:
         text.set(value=current_text + value)
 
