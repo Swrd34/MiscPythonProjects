@@ -36,13 +36,19 @@ def display_text_op(value):
 
     if value == "." and "." in last_num: #Prevent double decimals
         return
-    elif value == ".":
-        text.set(value=text.get() + value)
-        return
 
-    if value == "-" and current_text == "0":
-        text.set(value=value)
-        return
+
+    if value == "-":
+        if current_text == "0":
+            text.set(value=value)
+            return
+        elif last_char == "-" or last_char == ".":
+            return
+        elif last_char == "(":
+            text.set(text.get() + value)
+        else:
+            text.set(value=text.get() + " " + value + " ")
+            return
 
     if last_char in Calc_Logic.operator_precedence: #This is being used to check if an operator of opposite function, but equal precedence is being input right after each other
         if last_char == value:
