@@ -70,12 +70,12 @@ class CalculatorLogic:
                                     popped_val = op_queue.pop()
                                     output_list.append(popped_val)
 
-                            if len(op_queue) == 0:  # Stop if the queue is empty
+                                    if len(op_queue) == 0:  # Stop if the queue is empty
+                                        break
+                                    else:
+                                        continue
+                                op_queue.append(item)  # After checking precedences, add the item
                                 break
-                            else:
-                                continue
-
-                        op_queue.append(item) #After checking precedences, add the item
                     else:
                         op_queue.append(item) #If queue is empty, add the operator
 
