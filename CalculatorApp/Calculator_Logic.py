@@ -63,7 +63,7 @@ class CalculatorLogic:
                                 while op_queue[-1] != "(":
                                     popped_val = op_queue.pop()
                                     output_list.append(popped_val)
-                                op_queue.remove(op_queue[-1]) #Remove when found to prevent issues during solving.
+                                op_queue.pop() #Remove when found to prevent issues during solving.
                                 break
                             else:
                                 while self.operator_precedence[item] <= self.operator_precedence[op_queue[-1]]:  # While the operator has a lower or equal precedence to the top stack operator.
