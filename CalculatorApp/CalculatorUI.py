@@ -57,6 +57,9 @@ def display_text_op(value):
             try:
                 if Calc_Logic.operator_precedence[last_char] == Calc_Logic.operator_precedence[value]:
                     text.set(value=text.get().replace(current_text[-1], value)) #Using text.get() rather than current_text to preserve the spaces used for formatting
+                    return
+                elif last_char == ")":
+                    text.set(value=text.get() + " " + value + " ")
             except KeyError:
                 pass
     else:
