@@ -97,10 +97,6 @@ def display_text_op_parnth():
     else:
         text.set(value=text.get() + ")")
 
-
-
-
-
 def equals():
     current_text = text.get()
     if current_text == "0":
