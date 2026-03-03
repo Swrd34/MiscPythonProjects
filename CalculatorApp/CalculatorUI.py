@@ -33,11 +33,12 @@ def display_text_op(value):
     last_char = current_text[-1] #Get the last char in the equation
 
 
-    if value == "." and "." in last_num: #Prevent double decimals
-        return
-    elif value == ".":
-        text.set(value=text.get() + value)
-        return
+    if value == ".":
+        if "." in last_num: #Prevent double decimals
+            return
+        else:
+            text.set(value=text.get() + value)
+            return
 
 
     if value == "-":
