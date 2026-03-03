@@ -13,28 +13,28 @@ def display_text(value):
     if current_text == "0" or current_text == "Error":
         text.set(value=value)
     elif current_text[-1] == ")":
-        text.set(value=text.get() + " * " + value)
+        text.set(value=text.get() + " * " + value) #Using text.get() rather than current_text to preserve the spaces used for formatting
     else:
         text.set(value=text.get() + value)
 
 def display_text_op(value):
-    """Used for displaying operations (Preventing duplicate operations and weird looking equations)"""
+    """Used for displaying operations and symbols (Preventing duplicate operations and weird looking equations)"""
     current_text = text.get().replace(" ", "")
     l = (len(current_text) - 1)
 
-    while l != 0: #For getting the last number in current text
+    while l != 0: #For getting the last number in current text.
         if current_text[l] in Calc_Logic.operator_precedence:
             break
         else:
             l -= 1
             continue
 
-    last_num = current_text[l+1:] #Get the last number in the equation
-    last_char = current_text[-1] #Get the last char in the equation
+    last_num = current_text[l+1:] #Get the last number in the equation.
+    last_char = current_text[-1] #Get the last char in the equation.
 
 
     if value == ".":
-        if "." in last_num: #Prevent double decimals
+        if "." in last_num: #Prevent double decimals.
             return
         else:
             text.set(value=text.get() + value)
@@ -48,32 +48,33 @@ def display_text_op(value):
         elif last_char == "-" or last_char == ".":
             return
         elif last_char == "+":
-            text.set(value=text.get().replace(text.get()[-2], "-"))
-        elif last_char == "(" or last_char in ["*", "/"]:
+            text.set(value=text.get().replace(text.get()[-2], "-")) #change the "+" to a "-"
+        elif last_char == "(" or last_char in ["*", "/"]: #No spacing if the last char were these operations.
             text.set(text.get() + value)
         else:
             text.set(value=text.get() + " " + value + " ")
             return
 
-    if last_char in Calc_Logic.operator_precedence: #This is being used to check if an operator of opposite function, but equal precedence is being input right after each other
-        if last_char == value:
+    if last_char in Calc_Logic.operator_precedence:
+        if last_char == value or current_text == "-": #Prevents duplicates and weird "-" stuff.
             return
         else:
             try:
-                if Calc_Logic.operator_precedence[last_char] == Calc_Logic.operator_precedence[value]:
-                    text.set(value=text.get().replace(current_text[-1], value)) #Using text.get() rather than current_text to preserve the spaces used for formatting
+                if Calc_Logic.operator_precedence[last_char] == Calc_Logic.operator_precedence[value]: #check if an operator of opposite function, but equal precedence is being input.
+                    text.set(value=text.get().replace(current_text[-1], value))
                     return
                 elif last_char == ")":
                     text.set(value=text.get() + " " + value + " ")
+                    return
             except KeyError:
-                pass
+                pass #Might add an Error message. dunno.
     else:
         text.set(value=text.get() + " " + value + " ")
         return
 
 def display_text_op_parnth():
     current_text = text.get().replace(" ", "")
-    para_count = 0
+    para_count = 0 #Keep track of the amount of "(" and ")" symbols
     l = (len(current_text) - 1)
 
     if current_text == "0":
@@ -91,14 +92,17 @@ def display_text_op_parnth():
     if para_count % 2 == 0: #If there is no need for a closing ")"
         if current_text[-1].isdigit():
             text.set(value=text.get() + " * " + "(")
+            return
         elif current_text[-1] == "-":
             text.set(value=text.get() + "(")
-        elif not current_text[-1].isdigit():
+            return
+        elif current_text[-1] == ".":
             return
         else:
             text.set(value=text.get() + "(")
+            return
 
-    elif not current_text[-1].isdigit():
+    elif not current_text[-1].isdigit(): #Should only close after a number
         return
 
     else:
@@ -112,10 +116,11 @@ def equals():
     elif current_text[-1] == " " or current_text[-1] in ["+", "-", "*"]:
         return
 
-
     else:
-        post_fix_expr = Calc_Logic.pre_to_post(current_text)
-        text.set(value= Calc_Logic.post_eval(post_fix_expr))
+        parsed_string = Calc_Logic.parser(current_text) #Parse the string
+        post_fix = Calc_Logic.pre_to_post(parsed_string) #Run parsed string through Shunting Yard algorithm
+        ans = Calc_Logic.post_eval(post_fix) #Solve the post-Shunting Yard algorithm expression
+        text.set(value= ans)
 
 
 def reset_display():
