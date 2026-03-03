@@ -46,7 +46,9 @@ def display_text_op(value):
             return
         elif last_char == "-" or last_char == ".":
             return
-        elif last_char == "(":
+        elif last_char == "+":
+            text.set(value=text.get().replace(text.get()[-2], "-"))
+        elif last_char == "(" or last_char in ["*", "/"]:
             text.set(text.get() + value)
         else:
             text.set(value=text.get() + " " + value + " ")
