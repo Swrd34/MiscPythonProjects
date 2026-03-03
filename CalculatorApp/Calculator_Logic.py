@@ -99,7 +99,7 @@ class CalculatorLogic:
         if test_expr == "Error": #If pre_to_post returns an error, we do here as well.
             return "Error"
 
-        for itm, item in enumerate(test_expr):
+        for itm, item in enumerate(output_list):
             """Adds numbers stack and solves them 2 at a time"""
             if item not in self.operator_precedence: #If item is a number
                 num_stack.append(test_expr[itm])
