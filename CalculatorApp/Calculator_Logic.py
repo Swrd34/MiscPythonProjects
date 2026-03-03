@@ -102,7 +102,7 @@ class CalculatorLogic:
         for itm, item in enumerate(output_list):
             """Adds numbers stack and solves them 2 at a time"""
             if item not in self.operator_precedence: #If item is a number
-                num_stack.append(test_expr[itm])
+                num_stack.append(output_list[itm])
 
             else:
                 if item == "+":
