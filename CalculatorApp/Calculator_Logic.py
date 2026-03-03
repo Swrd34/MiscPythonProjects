@@ -5,7 +5,10 @@ class CalculatorLogic:
     def __init__(self):
         self.operator_precedence = {"+": 1, "-": 1, "*": 2, "/": 2, "(": 0, ")": 0}
 
-    def pre_to_post(self, expr_string):
+        return input_list
+
+
+    def pre_to_post(self, input_list):
         """Takes an expression and runs it through the ShuntYard algorithm to get the postfix expression"""
         expr_string = expr_string.replace(" ", "") #Remove any spaces in the string.
         input_list = []
