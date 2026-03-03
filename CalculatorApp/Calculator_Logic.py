@@ -62,38 +62,6 @@ class CalculatorLogic:
         """Takes an expression and runs it through the ShuntYard algorithm to get the postfix expression"""
         output_list = []
         op_queue = []
-        grouped_items = "" #Temporary string for holding multidigit numbers and decimals before being appended to the input_list as tokens.
-
-        for i, item in enumerate(expr_string):
-            if item == "-":
-                if i == 0: #When the first number is negative, group the negative and number together.
-                    grouped_items += item
-
-                elif expr_string[i-1].isdigit() or expr_string[i-1] == ")": #Handleing if the char before the current is a number, or the end of a parenthesis. In these cases, - should be treated as an operator.
-                    if grouped_items == "":  # If grouped items has nothing, append directly. Preventing empty strings from being appended.
-                        input_list.append(item)
-                    else: #When "-" is being treated as an operator, append the grouped numbers, than the operator by itself.
-                        input_list.append(grouped_items)
-                        input_list.append(item)
-                        grouped_items = ""
-
-                else: #In any other case, "-" must be a negative number.
-                    grouped_items += item
-
-            elif item.isdigit() or item == ".": #Adding regular numbers as well as decimal numbers.
-                grouped_items += item
-            else:
-                if grouped_items == "": #If grouped items has nothing, append directly.
-                    input_list.append(item)
-                else: #In any other case, we are dealing with an operator.
-                    input_list.append(grouped_items)
-                    input_list.append(item)
-                    grouped_items = ""
-
-        if grouped_items: #Append anything left in the grouped items string.
-            input_list.append(grouped_items)
-
-
 
         for item in input_list:
             try:
