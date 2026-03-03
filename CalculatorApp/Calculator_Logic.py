@@ -93,7 +93,7 @@ class CalculatorLogic:
         return output_list
 
 
-    def post_eval(self, test_expr):
+    def post_eval(self, output_list):
         """Solves postfix expressions and returns the value"""
         num_stack = []
         if output_list == "Error": #If pre_to_post returns an error, we do here as well.
