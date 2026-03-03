@@ -60,8 +60,6 @@ class CalculatorLogic:
 
     def pre_to_post(self, input_list):
         """Takes an expression and runs it through the ShuntYard algorithm to get the postfix expression"""
-        expr_string = expr_string.replace(" ", "") #Remove any spaces in the string.
-        input_list = []
         output_list = []
         op_queue = []
         grouped_items = "" #Temporary string for holding multidigit numbers and decimals before being appended to the input_list as tokens.
