@@ -4,6 +4,56 @@ class CalculatorLogic:
 
     def __init__(self):
         self.operator_precedence = {"+": 1, "-": 1, "*": 2, "/": 2, "(": 0, ")": 0}
+        self.last_answer = None
+
+    def parser(self, expr_string):
+        expr_string = expr_string.replace(" ", "") #Remove any spaces in the string.
+        grouped_items = "" # Temporary string for holding multidigit numbers and decimals before being appended to the input_list as tokens.
+        input_list = []
+
+        for i, item in enumerate(expr_string):
+            if item == "-":
+                if i == 0 and expr_string[i+1] != "(": #When the first number is negative, and the next item isn't an open parenthesis, group the negative and number together.
+                    grouped_items += item
+
+                elif i == 0 and expr_string[i+1] == "(":
+                    input_list.append(item + "1")
+                    input_list.append("*")
+
+                elif expr_string[i-1].isdigit() or expr_string[i-1] == ")": #Handleing if the char before the current is a number, or the end of a parenthesis. In these cases, - should be treated as an operator.
+                    if grouped_items == "":  # If grouped items has nothing, append directly. Preventing empty strings from being appended.
+                        input_list.append(item)
+                    else: #When "-" is being treated as an operator, append the grouped numbers, than the operator by itself.
+                        input_list.append(grouped_items)
+                        input_list.append(item)
+                        grouped_items = ""
+
+                elif expr_string[i+1] == "(":
+                    if grouped_items == "":  # If grouped items has nothing, append directly. Preventing empty strings from being appended.
+                        input_list.append(item)
+                    else:
+                        input_list.append(grouped_items)
+                        input_list.append(item + "1")
+                        input_list.append("*")
+                        grouped_items = ""
+
+
+                else: #In any other case, "-" must be a negative number.
+                    grouped_items += item
+
+            elif item.isdigit() or item == ".": #Adding regular numbers as well as decimal numbers.
+                grouped_items += item
+
+            else:
+                if grouped_items == "": #If grouped items has nothing, append directly.
+                    input_list.append(item)
+                else: #In any other case, we are dealing with an operator.
+                    input_list.append(grouped_items)
+                    input_list.append(item)
+                    grouped_items = ""
+
+        if grouped_items: #Append anything left in the grouped items string.
+            input_list.append(grouped_items)
 
         return input_list
 
