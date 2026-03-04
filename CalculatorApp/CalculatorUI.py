@@ -133,7 +133,9 @@ def equals():
         parsed_string = Calc_Logic.parser(current_text) #Parse the string
         post_fix = Calc_Logic.pre_to_post(parsed_string) #Run parsed string through Shunting Yard algorithm
         ans = Calc_Logic.post_eval(post_fix) #Solve the post-Shunting Yard algorithm expression
-        text.set(value= ans)
+        Calc_Logic.last_answer = ans
+        text.set(value = ans)
+        return
 
 
 def reset_display():
