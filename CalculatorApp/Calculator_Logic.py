@@ -41,6 +41,18 @@ class CalculatorLogic:
                 else: #In any other case, "-" must be a negative number.
                     grouped_items += item
 
+            elif item == "%":
+                if expr_string[i-1].isdigit():
+                    input_list.append("(")
+                    input_list.append(grouped_items)
+                    input_list.append("*")
+                    input_list.append("0.01")
+                    input_list.append(")")
+                    grouped_items = ""
+                else:
+                    input_list.append("*")
+                    input_list.append("0.01")
+
             elif item.isdigit() or item == ".": #Adding regular numbers as well as decimal numbers.
                 grouped_items += item
 
