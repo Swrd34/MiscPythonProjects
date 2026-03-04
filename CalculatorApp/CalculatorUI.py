@@ -12,7 +12,7 @@ def display_text(value):
 
     if current_text == "0" or current_text == "Error":
         text.set(value=value)
-    elif current_text[-1] == ")":
+    elif current_text[-1] == ")" or current_text[-1] == "%":
         text.set(value=text.get() + " * " + value) #Using text.get() rather than current_text to preserve the spaces used for formatting
     else:
         text.set(value=text.get() + value)
