@@ -68,6 +68,8 @@ def display_text_op(value):
                     return
             except KeyError:
                 pass #Might add an Error message. dunno.
+    elif last_char == ".":
+        return
     else:
         text.set(value=text.get() + " " + value + " ")
         return
