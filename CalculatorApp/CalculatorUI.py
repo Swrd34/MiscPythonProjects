@@ -121,6 +121,20 @@ def display_text_op_parnth():
     else:
         text.set(value=text.get() + ")")
 
+def display_last_ans():
+    current_test = text.get().replace(" ", "")
+    last_ans = str(Calc_Logic.last_answer)
+    if last_ans == "None":
+        return
+    elif current_test == "0":
+        text.set(value=last_ans)
+    elif current_test[-1].isdigit() or current_test[-1] == ")":
+        text.set(value=text.get() + " * " + last_ans)
+    elif current_test[-1] in ["+", "*", "/", "-", "("]:
+        text.set(value=text.get() + last_ans)
+    else:
+        return
+
 def equals():
     current_text = text.get()
     if current_text == "0":
