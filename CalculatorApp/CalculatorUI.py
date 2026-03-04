@@ -222,8 +222,8 @@ def make_button(button_display_text: str,
     button_make.config(width=width, height=height)
 
 
-make_button("C", 0, 1, func=reset_display, bg_color=op_button_color, func_parameter= None )
-make_button("()", 1, 1,func=display_text_op_parnth, bg_color=op_button_color, func_parameter=None)
+make_button("C", 0, 1, func=reset_display, bg_color=op_button_color)
+make_button("()", 1, 1,func=display_text_op_parnth, bg_color=op_button_color)
 make_button("%", 2, 1, func=display_text_op, bg_color=op_button_color,func_parameter=" FixMe ")
 make_button("*", 3, 1, func=display_text_op, bg_color=op_button_color, func_parameter="*")
 make_button("/", 3, 2,func=display_text_op, bg_color=op_button_color, func_parameter="/")
