@@ -104,7 +104,10 @@ def display_text_op_parnth():
             text.set(value=text.get() + "(")
             return
 
-    elif not current_text[-1].isdigit(): #Should only close after a number
+    elif current_text[-1] == "%":
+        text.set(value=text.get() + ")")
+
+    elif not current_text[-1].isdigit(): #Should only close after a number or "%"
         return
 
     else:
