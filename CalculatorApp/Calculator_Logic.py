@@ -179,5 +179,10 @@ class CalculatorLogic:
 
             return f"{answer:.2f}" + f"E+{answer_length - 1}"
 
+        elif "." in str(answer) and answer_length >= 12: #If the answer is long and contains a decimal. +1 length because the decimal counts.
+            return round(answer, 4)
+
+
+
         else:
             return answer
