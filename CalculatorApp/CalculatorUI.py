@@ -63,7 +63,7 @@ def display_text_op(value):
             return
 
     if last_char in Calc_Logic.operator_precedence:
-        if last_char == value or current_text == "-": #Prevents duplicates and weird "-" stuff.
+        if last_char == value or current_text == "-" or (current_text[-1] == "-" and current_text[-2]) : #Prevents duplicates and weird "-" stuff.
             return
         else:
             try:
