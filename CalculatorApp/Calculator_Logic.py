@@ -169,11 +169,7 @@ class CalculatorLogic:
         answer = num_stack[0]
         answer_length = len(str(answer))
 
-        if "." in str(answer) and answer_length >= 11: #If the answer is long and contains a decimal.
-            return answer #temp
-
-
-        elif answer_length >= 11: #If the answer has no decimal but is long
+        if answer_length >= 11 and answer > 10000000: #If the answer has no decimal but is long
             for num in range(answer_length-1):
                 answer = answer * Decimal(0.1)
 
