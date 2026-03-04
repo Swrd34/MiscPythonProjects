@@ -174,7 +174,7 @@ class CalculatorLogic:
 
 
         elif answer_length >= 11: #If the answer has no decimal but is long
-            for num in range(answer_length):
+            for num in range(answer_length-1):
                 answer = answer * Decimal(0.1)
 
             return f"{answer:.2f}" + f"E+{answer_length - 1}"
