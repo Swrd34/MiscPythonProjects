@@ -55,6 +55,13 @@ def display_text_op(value):
             text.set(value=text.get() + " " + value + " ")
             return
 
+    if value == "%":
+        if last_char.isdigit() or last_char == ")":
+            text.set(value=text.get() + value)
+            return
+        else:
+            return
+
     if last_char in Calc_Logic.operator_precedence:
         if last_char == value or current_text == "-": #Prevents duplicates and weird "-" stuff.
             return
