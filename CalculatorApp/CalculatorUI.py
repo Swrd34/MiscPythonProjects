@@ -92,7 +92,7 @@ def display_text_op_parnth():
 
 
     if para_count % 2 == 0: #If there is no need for a closing ")"
-        if current_text[-1].isdigit():
+        if current_text[-1].isdigit() or current_text[-1] == "%":
             text.set(value=text.get() + " * " + "(")
             return
         elif current_text[-1] == "-":
