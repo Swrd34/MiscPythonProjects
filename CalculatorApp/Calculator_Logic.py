@@ -177,7 +177,7 @@ class CalculatorLogic:
             for num in range(answer_length):
                 answer = answer * Decimal(0.1)
 
-            return f"{answer:.4f}" + f"E+{answer_length - 1}"
+            return f"{answer:.2f}" + f"E+{answer_length - 1}"
 
         else:
             return answer
