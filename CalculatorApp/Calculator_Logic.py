@@ -173,10 +173,21 @@ class CalculatorLogic:
             for num in range(answer_length-1):
                 answer = answer * Decimal(0.1)
 
-            return f"{answer:.2f}" + f"E+{answer_length - 1}"
+        if (answer_length >= self.max_length) or (answer_length >= (self.max_length - 1) and negative_answer):  # If the length of the answer is getting too big to display cleanly.
+            if "." not in answer_string:
+                answer = answer /  (10**(answer_length-1))
 
-        elif "." in str(answer) and answer_length >= 12: #If the answer is long and contains a decimal. +1 length because the decimal counts.
-            return round(answer, 4)
+                if negative_answer:
+                    return f"-{answer:.2f}" + f"E+{answer_length - 1}"
+                else:
+                    return f"{answer:.2f}" + f"E+{answer_length - 1}"
+            else:
+                if answer >= 10000000:
+                    decimal_place = answer_string.index(".") #Get the decimal place
+                    answer = answer / (10**(decimal_place-1))
+                    answer = f"{answer:.2f}" + f"E+{decimal_place - 1}"
+                else:
+                    answer = round(answer, 4)
 
 
 
