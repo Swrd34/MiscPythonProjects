@@ -171,7 +171,7 @@ class CalculatorLogic:
         if answer % 1 == 0:
             answer = int(answer)
 
-        answer = CalculatorLogic().answer_check(answer)
+        answer = self.answer_check(answer)
 
         return str(answer)
 
