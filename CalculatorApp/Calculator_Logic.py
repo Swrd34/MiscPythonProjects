@@ -71,7 +71,8 @@ def parser(expr_string):
                 input_list.append(grouped_items)
                 input_list.append(current_item)
                 grouped_items = ""
-                i += 1
+
+        i += 1
 
     if grouped_items: #Append anything left in the grouped items string.
         input_list.append(grouped_items)
