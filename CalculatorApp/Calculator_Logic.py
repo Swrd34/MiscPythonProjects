@@ -57,7 +57,26 @@ def parser(expr_string):
             else:
                 input_list.append("*")
                 input_list.append("0.01")
-                i += 1
+
+        elif current_item == "E":
+            num = Decimal(grouped_items)  # get the "x.x" number.
+            grouped_items = ""
+            exponent_index = i + 2  # Skip the E, and +.
+
+            while exponent_index != len(expr_string) and expr_string[exponent_index].isdigit():  # Get the number after "+".
+                grouped_items += expr_string[exponent_index]
+                exponent_index += 1
+
+            exponent = Decimal(10 ** int(grouped_items))
+
+            num = num * exponent
+
+            input_list.append(num)
+
+            grouped_items = ""
+
+            i += (exponent_index - i) - 1 #-1 to account for the iteration being added at the end of the loop. Skips +12.
+
 
         elif current_item.isdigit() or current_item == ".": #Adding regular numbers as well as decimal numbers.
             grouped_items += current_item
