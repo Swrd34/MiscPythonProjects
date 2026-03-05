@@ -19,7 +19,7 @@ lots about parsing input, stacks, algorithms, edge cases, and error handling. Ve
 <li> Basic arithmatic</li>
 <li> Parenthesis, percentage, and "last answer" buttons</li>
 <li> Scientific notation handeling for big numbers</li>
-<li> .exe executable</li>
+<li> .exe executable (In progress)</li>
 </ul>
 <p>My first GUI application. Many more to come.</p>
 
