@@ -167,6 +167,16 @@ class CalculatorLogic:
 
 
         answer = num_stack[0]
+
+        if answer % 1 == 0:
+            int(answer)
+
+        answer = CalculatorLogic().answer_check(answer)
+
+        return str(answer)
+
+    def answer_check(self, answer):
+        """Checking to see if the answer is too long to be displayed in the calculator box"""
         answer_length = len(str(answer))
         answer_string = str(answer)
         negative_answer = False  # This and the 2 previous variables are used for checking if "." or "-" in answer as well as the length of the answer.
