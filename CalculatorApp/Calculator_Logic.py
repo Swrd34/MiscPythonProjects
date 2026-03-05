@@ -169,9 +169,11 @@ class CalculatorLogic:
         answer = num_stack[0]
         answer_length = len(str(answer))
 
-        if answer_length >= 11 and answer > 10000000: #If the answer has no decimal but is long
-            for num in range(answer_length-1):
-                answer = answer * Decimal(0.1)
+        if "-" in answer_string:
+            negative_answer = True
+            answer_string = answer_string.replace("-", "")
+            answer = Decimal(answer_string)  # Get new answer number without the (-).
+            answer_length = len(answer_string)  # Get new answer length without the (-). This keeps the following branches consistent.
 
         if (answer_length >= self.max_length) or (answer_length >= (self.max_length - 1) and negative_answer):  # If the length of the answer is getting too big to display cleanly.
             if "." not in answer_string:
