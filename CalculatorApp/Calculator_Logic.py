@@ -189,7 +189,10 @@ class CalculatorLogic:
                 else:
                     answer = round(answer, 4)
 
-
+                if negative_answer:
+                    return f"-{answer}"
+                else:
+                    return answer
 
         else:
             return answer
