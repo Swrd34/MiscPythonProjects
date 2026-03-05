@@ -12,38 +12,31 @@ def parser(expr_string):
         if current_item == "-":
             if i == 0 and expr_string[i+1] != "(": #When the first number is negative, and the next item isn't an open parenthesis, group the negative and number together.
                 grouped_items += current_item
-                i += 1
 
             elif i == 0 and expr_string[i+1] == "(":
                 input_list.append(current_item + "1")
                 input_list.append("*")
-                i += 1
 
             elif expr_string[i-1].isdigit() or expr_string[i-1] == ")": #Handleing if the char before the current is a number, or the end of a parenthesis. In these cases, - should be treated as an operator.
                 if grouped_items == "":  # If grouped items has nothing, append directly. Preventing empty strings from being appended.
                     input_list.append(current_item)
-                    i += 1
                 else: #When "-" is being treated as an operator, append the grouped numbers, than the operator by itself.
                     input_list.append(grouped_items)
                     input_list.append(current_item)
                     grouped_items = ""
-                    i += 1
 
             elif expr_string[i+1] == "(":
                 if grouped_items == "":  # If grouped items has nothing, append directly. Preventing empty strings from being appended.
                     input_list.append(current_item)
-                    i += 1
                 else:
                     input_list.append(grouped_items)
                     input_list.append(current_item + "1")
                     input_list.append("*")
                     grouped_items = ""
-                    i += 1
 
 
             else: #In any other case, "-" must be a negative number.
                 grouped_items += current_item
-                i += 1
 
         elif current_item == "%":
             if expr_string[i-1].isdigit():
@@ -53,7 +46,6 @@ def parser(expr_string):
                 input_list.append("0.01")
                 input_list.append(")")
                 grouped_items = ""
-                i += 1
             else:
                 input_list.append("*")
                 input_list.append("0.01")
@@ -80,12 +72,10 @@ def parser(expr_string):
 
         elif current_item.isdigit() or current_item == ".": #Adding regular numbers as well as decimal numbers.
             grouped_items += current_item
-            i += 1
 
         else:
             if grouped_items == "": #If grouped items has nothing, append directly.
                 input_list.append(current_item)
-                i += 1
             else: #In any other case, we are dealing with an operator.
                 input_list.append(grouped_items)
                 input_list.append(current_item)
