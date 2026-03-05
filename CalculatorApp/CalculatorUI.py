@@ -144,7 +144,7 @@ def equals():
         return
 
     else:
-        parsed_string = Calc_Logic.parser(current_text) #Parse the string
+        parsed_string = Calculator_Logic.parser(current_text) #Parse the string
         post_fix = Calc_Logic.pre_to_post(parsed_string) #Run parsed string through Shunting Yard algorithm
         ans = Calc_Logic.post_eval(post_fix) #Solve the post-Shunting Yard algorithm expression
         Calc_Logic.last_answer = ans

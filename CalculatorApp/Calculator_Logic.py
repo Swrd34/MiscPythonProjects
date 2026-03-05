@@ -4,38 +4,48 @@ def parser(expr_string):
     expr_string = expr_string.replace(" ", "") #Remove any spaces in the string.
     grouped_items = "" # Temporary string for holding multidigit numbers and decimals before being appended to the input_list as tokens.
     input_list = []
+    i = 0
 
-    for i, item in enumerate(expr_string):
-        if item == "-":
+
+    while i != len(expr_string):
+        current_item = expr_string[i]
+        if current_item == "-":
             if i == 0 and expr_string[i+1] != "(": #When the first number is negative, and the next item isn't an open parenthesis, group the negative and number together.
-                grouped_items += item
+                grouped_items += current_item
+                i += 1
 
             elif i == 0 and expr_string[i+1] == "(":
-                input_list.append(item + "1")
+                input_list.append(current_item + "1")
                 input_list.append("*")
+                i += 1
 
             elif expr_string[i-1].isdigit() or expr_string[i-1] == ")": #Handleing if the char before the current is a number, or the end of a parenthesis. In these cases, - should be treated as an operator.
                 if grouped_items == "":  # If grouped items has nothing, append directly. Preventing empty strings from being appended.
-                    input_list.append(item)
+                    input_list.append(current_item)
+                    i += 1
                 else: #When "-" is being treated as an operator, append the grouped numbers, than the operator by itself.
                     input_list.append(grouped_items)
-                    input_list.append(item)
+                    input_list.append(current_item)
                     grouped_items = ""
+                    i += 1
 
             elif expr_string[i+1] == "(":
                 if grouped_items == "":  # If grouped items has nothing, append directly. Preventing empty strings from being appended.
-                    input_list.append(item)
+                    input_list.append(current_item)
+                    i += 1
                 else:
                     input_list.append(grouped_items)
-                    input_list.append(item + "1")
+                    input_list.append(current_item + "1")
                     input_list.append("*")
                     grouped_items = ""
+                    i += 1
 
 
             else: #In any other case, "-" must be a negative number.
-                grouped_items += item
+                grouped_items += current_item
+                i += 1
 
-        elif item == "%":
+        elif current_item == "%":
             if expr_string[i-1].isdigit():
                 input_list.append("(")
                 input_list.append(grouped_items)
@@ -43,20 +53,25 @@ def parser(expr_string):
                 input_list.append("0.01")
                 input_list.append(")")
                 grouped_items = ""
+                i += 1
             else:
                 input_list.append("*")
                 input_list.append("0.01")
+                i += 1
 
-        elif item.isdigit() or item == ".": #Adding regular numbers as well as decimal numbers.
-            grouped_items += item
+        elif current_item.isdigit() or current_item == ".": #Adding regular numbers as well as decimal numbers.
+            grouped_items += current_item
+            i += 1
 
         else:
             if grouped_items == "": #If grouped items has nothing, append directly.
-                input_list.append(item)
+                input_list.append(current_item)
+                i += 1
             else: #In any other case, we are dealing with an operator.
                 input_list.append(grouped_items)
-                input_list.append(item)
+                input_list.append(current_item)
                 grouped_items = ""
+                i += 1
 
     if grouped_items: #Append anything left in the grouped items string.
         input_list.append(grouped_items)
@@ -210,3 +225,6 @@ class CalculatorLogic:
 
         else:
             return answer
+
+test = "2.3E+12 * 4"
+print(parser(test))
