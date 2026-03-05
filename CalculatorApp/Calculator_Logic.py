@@ -168,6 +168,8 @@ class CalculatorLogic:
 
         answer = num_stack[0]
         answer_length = len(str(answer))
+        answer_string = str(answer)
+        negative_answer = False  # This and the 2 previous variables are used for checking if "." or "-" in answer as well as the length of the answer.
 
         if "-" in answer_string:
             negative_answer = True
