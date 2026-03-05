@@ -1,6 +1,7 @@
 from decimal import Decimal, InvalidOperation, DivisionByZero #Precice decimal numbers
 
 def parser(expr_string):
+    """Coverts a string to make it valid for Shunting Yard algorithm. Returns a list."""
     expr_string = expr_string.replace(" ", "") #Remove any spaces in the string.
     grouped_items = "" # Temporary string for holding multidigit numbers and decimals before being appended to the input_list as tokens.
     input_list = []
