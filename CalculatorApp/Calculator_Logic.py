@@ -169,7 +169,7 @@ class CalculatorLogic:
         answer = num_stack[0]
 
         if answer % 1 == 0:
-            int(answer)
+            answer = int(answer)
 
         answer = CalculatorLogic().answer_check(answer)
 
