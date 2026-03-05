@@ -225,6 +225,3 @@ class CalculatorLogic:
 
         else:
             return answer
-
-test = "2.3E+12 * 4"
-print(parser(test))
