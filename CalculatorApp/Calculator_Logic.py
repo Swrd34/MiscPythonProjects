@@ -236,3 +236,9 @@ class CalculatorLogic:
 
         else:
             return answer
+
+test = "-6 + 3"
+parsed = parser(test)
+engine = CalculatorLogic()
+
+print(engine.pre_to_post(parsed))
