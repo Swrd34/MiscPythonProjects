@@ -238,4 +238,3 @@ class CalculatorLogic:
             return answer
 
 
-print(engine.pre_to_post(parsed))
