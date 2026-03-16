@@ -207,7 +207,7 @@ class CalculatorLogic:
         answer_string = str(answer)
         negative_answer = False  # This and the 2 previous variables are used for checking if "." or "-" in answer as well as the length of the answer.
 
-        if "-" in answer_string:
+        if "-" in answer_string and answer_length >= self.max_length + 1:
             negative_answer = True
             answer_string = answer_string.replace("-", "")
             answer = Decimal(answer_string)  # Get new answer number without the (-).
